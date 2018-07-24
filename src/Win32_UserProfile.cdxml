@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='utf-8'?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="root/cimv2/Win32_UserProfile">
+    <Version>1.1.3.0</Version>
+    <DefaultNoun>UserProfile</DefaultNoun>
+    <InstanceCmdlets>
+      <GetCmdletParameters DefaultCmdletParameterSet="ByPath">
+        <QueryableProperties>
+<!--
+                        <Property PropertyName="UserName">
+                            <Type PSType="String" />
+                            <RegularQuery AllowGlobbing="true">
+                                <CmdletParameterMetadata IsMandatory="true" Position="0" Aliases="Name" CmdletParameterSets="ByName" />
+                            </RegularQuery>
+                        </Property>
+-->
+          <Property PropertyName="SID">
+            <Type PSType="String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="true" CmdletParameterSets="BySID" ValueFromPipelineByPropertyName="true" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="LocalPath">
+            <Type PSType="String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" Aliases="Path" CmdletParameterSets="ByPath" ValueFromPipeline="true" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="LastUseTime">
+            <Type PSType="DateTime" />
+            <MaxValueQuery>
+              <CmdletParameterMetadata PSName="Before" />
+            </MaxValueQuery>
+          </Property>
+          <Property PropertyName="Status">
+            <Type PSType="UserProfile.Status" />
+            <RegularQuery>
+              <CmdletParameterMetadata />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="Loaded">
+            <Type PSType="Boolean" />
+            <RegularQuery>
+              <CmdletParameterMetadata />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="RoamingConfigured">
+            <Type PSType="Boolean" />
+            <RegularQuery>
+              <CmdletParameterMetadata PSName="Roaming" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="Special">
+            <Type PSType="Boolean" />
+            <RegularQuery>
+              <CmdletParameterMetadata />
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+        <!--<QueryOptions>
+            <Option OptionName="Special">
+              <Type PSType="System.Management.Automation.SwitchParameter" />
+              <CmdletParameterMetadata PSName="IncludeSpecial" CmdletParameterSets="Default BySID ByPath"/>
+            </Option>
+          </QueryOptions>-->
+      </GetCmdletParameters>
+      <!--  Get-UserProfile -->
+      <GetCmdlet>
+        <CmdletMetadata Verb="Get" />
+      </GetCmdlet>
+      <!--  Remove-UserProfile cmdlet  -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Remove" ConfirmImpact="High"/>
+        <Method MethodName="cim:DeleteInstance">
+          <ReturnValue>
+            <Type PSType="System.Int32" />
+            <CmdletOutputMetadata>
+              <ErrorCode />
+            </CmdletOutputMetadata>
+          </ReturnValue>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByPath">
+          <QueryableProperties>
+            <!--
+                        <Property PropertyName="UserName">
+                            <Type PSType="String" />
+                            <RegularQuery AllowGlobbing="true">
+                                <CmdletParameterMetadata IsMandatory="true" Position="0" Aliases="Name" CmdletParameterSets="ByName" />
+                            </RegularQuery>
+                        </Property>
+-->
+            <Property PropertyName="SID">
+              <Type PSType="String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" CmdletParameterSets="BySID" ValueFromPipelineByPropertyName="true" />
+              </RegularQuery>
+            </Property>
+            <Property PropertyName="LocalPath">
+              <Type PSType="String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" Aliases="Path" CmdletParameterSets="ByPath" ValueFromPipeline="true" />
+              </RegularQuery>
+            </Property>
+            <Property PropertyName="LastUseTime">
+              <Type PSType="DateTime" />
+              <MaxValueQuery>
+                <CmdletParameterMetadata PSName="Before" />
+              </MaxValueQuery>
+            </Property>
+            <Property PropertyName="Status">
+              <Type PSType="UserProfile.Status" />
+              <RegularQuery>
+                <CmdletParameterMetadata />
+              </RegularQuery>
+            </Property>
+            <Property PropertyName="Loaded">
+              <Type PSType="Boolean" />
+              <RegularQuery>
+                <CmdletParameterMetadata />
+              </RegularQuery>
+            </Property>
+            <Property PropertyName="RoamingConfigured">
+              <Type PSType="Boolean" />
+              <RegularQuery>
+                <CmdletParameterMetadata PSName="Roaming" />
+              </RegularQuery>
+            </Property>
+            <Property PropertyName="Special">
+              <Type PSType="Boolean" />
+              <RegularQuery>
+                <CmdletParameterMetadata />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+      <!--  Set-ProfileOwner cmdlet  -->
+      <Cmdlet>
+        <CmdletMetadata Verb="Set" Noun="ProfileOwner" ConfirmImpact="Medium"/>
+        <Method MethodName="ChangeOwner">
+          <Parameters>
+            <!-- NewOwnerSID -->
+            <Parameter ParameterName="NewOwnerSID">
+              <Type PSType="System.String" />
+              <CmdletParameterMetadata PSName="SID" Aliases="NewSID" IsMandatory="true">
+                <ValidateNotNull />
+                <ValidateNotNullOrEmpty />
+              </CmdletParameterMetadata>
+            </Parameter>
+            <!-- Flags -->
+            <Parameter ParameterName="Flags">
+              <Type PSType="UserProfile.ChangeOwner.Flags" />
+              <CmdletParameterMetadata />
+            </Parameter>
+          </Parameters>
+        </Method>
+        <GetCmdletParameters DefaultCmdletParameterSet="ByPath">
+          <QueryableProperties>
+            <Property PropertyName="LocalPath">
+              <Type PSType="String" />
+              <RegularQuery AllowGlobbing="true">
+                <CmdletParameterMetadata IsMandatory="true" CmdletParameterSets="ByPath" Aliases="Path" ValueFromPipelineByPropertyName="true" />
+              </RegularQuery>
+            </Property>
+          </QueryableProperties>
+        </GetCmdletParameters>
+      </Cmdlet>
+    </InstanceCmdlets>
+
+    <CmdletAdapterPrivateData>
+      <Data Name="ClientSideShouldProcess"/>
+    </CmdletAdapterPrivateData>
+  </Class>
+
+  <Enums>
+    <Enum EnumName="UserProfile.Status" UnderlyingType="System.UInt32">
+      <Value Name="Undefined" Value="0" />
+      <Value Name="Temporary" Value="1" />
+      <Value Name="Roaming" Value="2" />
+      <Value Name="Mandatory" Value="4" />
+      <Value Name="Corrupted" Value="8" />
+    </Enum>
+    <Enum EnumName="UserProfile.Health" UnderlyingType="System.Byte">
+      <Value Name="Healthy" Value="0" />
+      <Value Name="Unhealthy" Value="1" />
+      <Value Name="Caution" Value="2" />
+      <Value Name="NotApplicable" Value="3" />
+    </Enum>
+    <Enum EnumName="UserProfile.ChangeOwner.Flags" UnderlyingType="System.UInt32">
+      <Value Name="NoReplace" Value="0" />
+      <Value Name="Replace" Value="1" />
+      <Value Name="DeleteReplaced" Value="3" />
+    </Enum>
+  </Enums>
+</PowerShellMetadata>

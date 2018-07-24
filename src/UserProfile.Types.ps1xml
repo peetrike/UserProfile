@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+  <Type>
+    <Name>Microsoft.Management.Infrastructure.CimInstance#root/cimv2/Win32_UserProfile</Name>
+    <Members>
+       <ScriptProperty>
+        <Name>UserName</Name>
+        <GetScriptBlock>
+          Get-Ciminstance Win32_Account -Filter ("sid='{0}'" -f $this.sid) | Select-Object -ExpandProperty caption
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Status</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.UserProfile.Status]($this.PSBase.CimInstanceProperties['Status'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>HealthStatus</Name>
+        <GetScriptBlock>
+          [Microsoft.PowerShell.Cmdletization.GeneratedTypes.UserProfile.Health]($this.PSBase.CimInstanceProperties['HealthStatus'].Value)
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>

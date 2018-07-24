@@ -1,0 +1,22 @@
+TOPIC
+    about_UserProfile
+
+SHORT DESCRIPTION
+    Describes module that helps to manage user profiles on local and remote computers.
+
+LONG DESCRIPTION
+    UserProfile is CDXML-based module that helps to manage user profiles.  It allows to find, reckognize,
+    delete profiles or change the profile owner.  All operations are based on Win32_UserProfile CIM object.
+
+    The profile management can be performed remotely on many computers, using CIM Sessions.
+
+    Possible commands are:
+
+    Get-UserProfile    - find user profiles
+    Get-ProfileOwner   - show user profile owner name instead of SID
+    Remove-UserProfile - deletes user profiles
+    Set-ProfileOwner   - changes the owner of user profile
+
+SEE ALSO
+    Win32_UserProfile class: http://msdn.microsoft.com/library/ee886409
+    Get-CimInstance
