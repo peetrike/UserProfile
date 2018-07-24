@@ -1,2 +1,5 @@
 # Release folder for build process
 Release/*
+
+# old help project folder
+help/*
