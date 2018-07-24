@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+  <ViewDefinitions>
+    <!-- Generic Record -->
+    <View>
+      <Name>Default.Table</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/cimv2/Win32_UserProfile</TypeName>
+      </ViewSelectedBy>
+    <TableControl>
+      <TableHeaders>
+        <TableColumnHeader>
+         <label>Last Used</label>
+          <Width>20</Width>
+        </TableColumnHeader>
+        <TableColumnHeader>
+          <label>Status</label>
+          <Width>9</Width>
+        </TableColumnHeader>
+        <TableColumnHeader>
+          <label>Roaming</label>
+          <Width>7</Width>
+        </TableColumnHeader>
+        <TableColumnHeader>
+          <label>Loaded</label>
+          <Width>6</Width>
+        </TableColumnHeader>
+        <TableColumnHeader>
+          <label>Local Path</label>
+          <Width>42</Width>
+        </TableColumnHeader>
+<!--
+        <TableColumnHeader>
+          <label>User</label>
+          <Width>30</Width>
+        </TableColumnHeader>
+-->
+      </TableHeaders>
+      <TableRowEntries>
+        <TableRowEntry>
+          <TableColumnItems>
+            <TableColumnItem>
+              <PropertyName>LastUseTime</PropertyName>
+            </TableColumnItem>
+            <TableColumnItem>
+              <PropertyName>Status</PropertyName>
+            </TableColumnItem>
+            <TableColumnItem>
+              <PropertyName>RoamingConfigured</PropertyName>
+            </TableColumnItem>
+            <TableColumnItem>
+              <PropertyName>Loaded</PropertyName>
+            </TableColumnItem>
+            <TableColumnItem>
+              <PropertyName>LocalPath</PropertyName>
+            </TableColumnItem>
+<!--
+            <TableColumnItem>
+              <PropertyName>UserName</PropertyName>
+            </TableColumnItem>
+-->
+          </TableColumnItems>
+        </TableRowEntry>
+      </TableRowEntries>
+    </TableControl>
+  </View>
+  <View>
+      <Name>Default.List</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Management.Infrastructure.CimInstance#root/cimv2/Win32_UserProfile</TypeName>
+      </ViewSelectedBy>
+     <ListControl>
+      <ListEntries>
+        <ListEntry>
+          <ListItems>
+            <ListItem>
+              <label>LastUseTime</label>
+              <PropertyName>LastUseTime</PropertyName>
+            </ListItem>
+            <ListItem>
+              <label>Loaded</label>
+              <PropertyName>Loaded</PropertyName>
+            </ListItem>
+            <ListItem>
+              <label>LocalPath</label>
+              <PropertyName>LocalPath</PropertyName>
+            </ListItem>
+            <ListItem>
+              <label>RoamingConfigured</label>
+              <PropertyName>RoamingConfigured</PropertyName>
+            </ListItem>
+            <ListItem>
+              <label>RoamingPath</label>
+              <PropertyName>RoamingPath</PropertyName>
+            </ListItem>
+<!--
+            <ListItem>
+              <label>UserName</label>
+              <PropertyName>UserName</PropertyName>
+            </ListItem>
+-->
+            <ListItem>
+              <label>RefCount</label>
+              <PropertyName>RefCount</PropertyName>
+            </ListItem>
+            <ListItem>
+              <label>SID</label>
+              <PropertyName>SID</PropertyName>
+            </ListItem>
+            <ListItem>
+              <label>Status</label>
+              <PropertyName>Status</PropertyName>
+            </ListItem>
+          </ListItems>
+        </ListEntry>
+      </ListEntries>
+    </ListControl>
+  </View>
+  </ViewDefinitions>
+</Configuration>

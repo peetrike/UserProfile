@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+  <Class ClassName="root/cimv2/Win32_Account">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>ProfileOwner</DefaultNoun>
+    <InstanceCmdlets>
+      <GetCmdletParameters>
+        <QueryableProperties>
+          <Property PropertyName="SID">
+            <Type PSType="String" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="true" Position="0" CmdletParameterSets="BySID" ValueFromPipelineByPropertyName="true"/>
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+      </GetCmdletParameters>
+    </InstanceCmdlets>
+  </Class>
+
+</PowerShellMetadata>
