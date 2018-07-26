@@ -20,7 +20,7 @@ Possible commands are:
 
 Get this module from [PowerShell Gallery](https://www.powershellgallery.com)
 
-1. Ensure that you have PowershellGet module.  IF you have PowerShell 5 or newer, you already have that module.  For Powershell 3 and 4, you can follow the instructions to install it using [PackageManagement MSI](https://docs.microsoft.com/en-us/powershell/gallery/installing-psget).
+1. Ensure that you have PowershellGet module.  If you have PowerShell 5 or newer, you already have that module.  For Powershell 3 and 4, you can follow the instructions to install it using [PackageManagement MSI](https://docs.microsoft.com/en-us/powershell/gallery/installing-psget).
 2. Now get the module:
 
 ```powershell
