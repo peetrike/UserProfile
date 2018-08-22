@@ -1,12 +1,13 @@
 
 # Taken with love from @juneb_get_help (https://raw.githubusercontent.com/juneb/PesterTDD/master/Module.Help.Tests.ps1)
 
-$manifestPath = "$PSScriptRoot/../src/UserPRofile.psd1"
-$manifest = Import-PowerShellDataFile -Path $manifestPath
+$ModuleName = 'UserProfile'
+$manifestPath = "$PSScriptRoot/../src/$ModuleName.psd1"
+# $manifest = Import-PowerShellDataFile -Path $manifestPath
 
 # Get module commands
 # Remove all versions of the module from the session. Pester can't handle multiple versions.
-Remove-Module -Name psake -Force
+Get-Module $ModuleName | Remove-Module -Force
 Import-Module -Name $manifestPath -Force -Verbose:$false -ErrorAction Stop
 $commands = Get-Command -Module psake -CommandType Cmdlet, Function, Workflow  # Not alias
 
