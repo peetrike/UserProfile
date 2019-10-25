@@ -56,7 +56,7 @@
 ###############################################################################
 # Dot source the user's customized properties and extension tasks.
 ###############################################################################
-. $PSScriptRoot\build.settings.ps1
+Include $PSScriptRoot\build.settings.ps1
 
 ###############################################################################
 # Private properties.
@@ -257,8 +257,9 @@ Task GenerateMarkdown -requiredVariables DefaultLocale, DocsRootDir, ModuleName,
 
         $MarkDownOutputFolder = Join-Path -Path $DocsRootDir -ChildPath $DefaultLocale
 
-        if (Get-ChildItem -LiteralPath $DocsRootDir -Filter *.md -Recurse) {
+        if (Get-ChildItem -Path $DocsRootDir -Filter *.md -Exclude about*.md -Recurse) {
             Get-ChildItem -LiteralPath $DocsRootDir -Directory | ForEach-Object {
+                Write-Verbose -Message ('Updating help for {0}' -f $_.FullName)
                 $null = Update-MarkdownHelpModule -Path $_.FullName -RefreshModulePage # -UpdateInputOutput
             }
         }
@@ -397,7 +398,7 @@ Task CoreInstall -requiredVariables ModuleOutDir {
     "Module installed into $InstallPath"
 }
 
-Task Test -depends Build -requiredVariables TestRootDir, ModuleName, CodeCoverageEnabled, CodeCoverageFiles {
+Task Test -depends Build, BuildHelp -requiredVariables TestRootDir, ModuleName, CodeCoverageEnabled, CodeCoverageFiles {
     if (!(Get-Module Pester -ListAvailable -Verbose:$false)) {
         "Pester module is not installed. Skipping $($psake.context.currentTaskName) task."
         return
@@ -442,11 +443,11 @@ Task Test -depends Build -requiredVariables TestRootDir, ModuleName, CodeCoverag
     }
     finally {
         Microsoft.PowerShell.Management\Pop-Location
-        Remove-Module $ModuleName -Verbose:$false # -ErrorAction SilentlyContinue
+        Get-Module $ModuleName | Remove-Module -Verbose:$false # -ErrorAction SilentlyContinue
     }
 }
 
-Task Publish -depends Build, Test, BuildHelp, GenerateFileCatalog, BeforePublish, CorePublish, AfterPublish {
+Task Publish -depends Build, BuildHelp, Test, GenerateFileCatalog, BeforePublish, CorePublish, AfterPublish {
 }
 
 Task CorePublish -requiredVariables SettingsPath, ModuleOutDir {
