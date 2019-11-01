@@ -1,130 +1,116 @@
-﻿#
-# Module manifest for module 'UserProfile'
-#
+﻿# Module manifest for module 'UserProfile'
 # Generated on: 18.06.2015
-#
 
 @{
+    RootModule = 'UserProfile.psm1'
+    ModuleVersion = '1.0'
+    Description = 'This module manages user profiles on local and remote computers'
 
-# Script module or binary module file associated with this manifest.
-# RootModule = ''
+    GUID = '76d4c0a7-9d35-4eb9-a756-28e5d22fb5ab'
 
-# Version number of this module.
-ModuleVersion = '1.0'
+    Author = 'Peter Wawa'
+    CompanyName = '!ZUM!'
+    Copyright = '(c) 2015 Peter Wawa. All rights reserved.'
 
-# ID used to uniquely identify this module
-GUID = '76d4c0a7-9d35-4eb9-a756-28e5d22fb5ab'
 
-# Author of this module
-Author = 'Peter Wawa'
+    # Minimum version of the Windows PowerShell engine required by this module
+    PowerShellVersion = "5.1"
 
-# Company or vendor of this module
-CompanyName = '!ZUM!'
+    # Supported PSEditions
+    # CompatiblePSEditions = @()
 
-# Copyright statement for this module
-Copyright = '(c) 2015 Peter Wawa. All rights reserved.'
+    # Name of the Windows PowerShell host required by this module
+    # PowerShellHostName = ''
 
-# Description of the functionality provided by this module
-Description = 'This module manages user profiles on local and remote computers'
+    # Minimum version of the Windows PowerShell host required by this module
+    # PowerShellHostVersion = ''
 
-# Minimum version of the Windows PowerShell engine required by this module
-PowerShellVersion = "3.0"
+    # Minimum version of Microsoft .NET Framework required by this module
+    # DotNetFrameworkVersion = ''
 
-# Name of the Windows PowerShell host required by this module
-# PowerShellHostName = ''
+    # Minimum version of the common language runtime (CLR) required by this module
+    # CLRVersion = ''
 
-# Minimum version of the Windows PowerShell host required by this module
-# PowerShellHostVersion = ''
+    # Processor architecture (None, X86, Amd64) required by this module
+    # ProcessorArchitecture = ''
 
-# Minimum version of Microsoft .NET Framework required by this module
-# DotNetFrameworkVersion = ''
+    # Modules that must be imported into the global environment prior to importing this module
+    RequiredModules = @(
+        'CimCmdlets'
+    )
 
-# Minimum version of the common language runtime (CLR) required by this module
-# CLRVersion = ''
+    # Assemblies that must be loaded prior to importing this module
+    # RequiredAssemblies = @()
 
-# Processor architecture (None, X86, Amd64) required by this module
-# ProcessorArchitecture = ''
+    # Script files (.ps1) that are run in the caller's environment prior to importing this module.
+    # ScriptsToProcess = @()
 
-# Modules that must be imported into the global environment prior to importing this module
-# RequiredModules = @()
+    # Type files (.ps1xml) to be loaded when importing this module
+    TypesToProcess = @(
+        'UserProfile.Types.ps1xml'
+    )
 
-# Assemblies that must be loaded prior to importing this module
-# RequiredAssemblies = @()
+    # Format files (.ps1xml) to be loaded when importing this module
+    FormatsToProcess = @(
+        'UserProfile.Format.ps1xml'
+    )
 
-# Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+    # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
+    NestedModules = @(
+        'Win32_UserProfile.cdxml'
+        'ProfileOwner.cdxml'
+    )
 
-# Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = @(
-    'UserProfile.Types.ps1xml'
-)
+    # Functions to export from this module
+    FunctionsToExport = @(
+        'Get-ProfileOwner'
+        'Get-UserProfile'
+        'Remove-UserProfile'
+        'Set-ProfileOwner'
+    )
 
-# Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = @(
-    'UserProfile.Format.ps1xml'
-)
+    # Cmdlets to export from this module
+    CmdletsToExport = @()
 
-# Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @(
-    'Win32_UserProfile.cdxml'
-    'ProfileOwner.cdxml'
-)
+    # Variables to export from this module
+    VariablesToExport = @()
 
-# Functions to export from this module
-FunctionsToExport = @(
-    'Get-ProfileOwner'
-    'Get-UserProfile'
-    'Remove-UserProfile'
-    'Set-ProfileOwner'
-)
+    # Aliases to export from this module
+    AliasesToExport = @()
 
-# Cmdlets to export from this module
-CmdletsToExport = '*'
+    # List of all modules packaged with this module
+    # ModuleList = @()
 
-# Variables to export from this module
-VariablesToExport = '*'
+    # List of all files packaged with this module
+    # FileList = @()
 
-# Aliases to export from this module
-AliasesToExport = '*'
+    # Private data to pass to the module specified in RootModule/ModuleToProcess
+    PrivateData = @{
+        PSData = @{
 
-# List of all modules packaged with this module
-# ModuleList = @()
+            # Tags applied to this module. These help with module discovery in online galleries.
+            Tags = @(
+                'UserProfile',
+                'Profile'
+            )
 
-# List of all files packaged with this module
-# FileList = @()
+            ExternalModuleDependencies = @(
+                'CimCmdlets'
+            )
 
-# Private data to pass to the module specified in RootModule/ModuleToProcess
-PrivateData = @{
-    PSData = @{
+            LicenseUri = 'https://opensource.org/licenses/MIT'
+            ProjectUri = 'https://github.com/peetrike/UserProfile'
 
-        # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = @(
-            'UserProfile',
-            'Profile'
-        )
+            # A URL to an icon representing this module.
+            # IconUri = ''
 
-        # ExternalModuleDependencies = @()
+            ReleaseNotes = 'https://github.com/peetrike/UserProfile/blob/master/CHANGELOG.md'
+        } # End of PSData hashtable
+    } # End of PrivateData hashtable
 
-        # A URL to the license for this module.
-        LicenseUri = 'https://opensource.org/licenses/MIT'
+    # HelpInfo URI of this module
+    # HelpInfoURI = ''
 
-        # A URL to the main website for this project.
-        ProjectUri = 'https://github.com/peetrike/UserProfile'
-
-        # A URL to an icon representing this module.
-        # IconUri = ''
-
-        # ReleaseNotes of this module
-        ReleaseNotes = 'https://github.com/peetrike/UserProfile/blob/master/CHANGELOG.md'
-
-    } # End of PSData hashtable
-
-} # End of PrivateData hashtable
-
-# HelpInfo URI of this module
-# HelpInfoURI = ''
-
-# Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
-
+    # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
+    # DefaultCommandPrefix = ''
 }
